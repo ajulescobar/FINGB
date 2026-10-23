@@ -470,7 +470,10 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:
 .opt{color:inherit;font-size:14.5px;padding:11px 14px}
 .mf{display:flex;justify-content:flex-end}
 .mcard .fb2{font-size:14px;color:#C6D3E6}
-.rhr{display:flex;gap:10px;align-items:center}.reopen{background:#E3A93B;color:#0C1520;border-color:#E3A93B;padding:2px 10px;min-height:0;font-size:12px}
+.rhr{display:flex;gap:10px;align-items:center}
+.reopen.pulse{animation:retoGlow 1.6s ease-in-out infinite;font-weight:700;padding:4px 14px}
+@keyframes retoGlow{0%,100%{box-shadow:0 0 0 0 #E3A93B00,0 0 6px 0 #E3A93B66;transform:scale(1)}50%{box-shadow:0 0 0 5px #E3A93B33,0 0 22px 4px #E3A93BAA;transform:scale(1.07)}}
+@media (prefers-reduced-motion:reduce){.reopen.pulse{animation:none;box-shadow:0 0 0 3px #E3A93B66}}.reopen{background:#E3A93B;color:#0C1520;border-color:#E3A93B;padding:2px 10px;min-height:0;font-size:12px}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 /* portada animada */
 .cover>.rings{position:absolute;z-index:0;right:-40px;top:50%;transform:translateY(-50%);width:min(60vh,460px);opacity:.7;animation:none}
@@ -1066,7 +1069,7 @@ $('bBest').addEventListener('click',()=>{const b=best();Object.keys(CTL).forEach
 
 /* ---------- retos (ventana emergente) ---------- */
 const ans={};let modalTimer=null;
-function updReopen(){const b=B[cur];$('reopen').hidden=!(b.q&&$('modal').hidden);}
+function updReopen(){const b=B[cur],r=$('reopen');r.hidden=!(b.q&&$('modal').hidden);r.classList.toggle('pulse',ans[cur]===undefined);r.textContent=ans[cur]===undefined?'Ver el reto':'Repasar el reto';}
 function closeModal(){$('modal').hidden=true;$('modal').innerHTML='';updReopen();}
 function openModal(){const b=B[cur],q=b.q;if(!q)return;const a=ans[cur];
   $('modal').hidden=false;
@@ -1076,16 +1079,8 @@ function openModal(){const b=B[cur],q=b.q;if(!q)return;const a=ans[cur];
    `<div class="mf"><button class="btn ${a===undefined?'':'primary'}" data-a="mclose">${a===undefined?'Saltar':'Continuar'}</button></div></div>`;
   updReopen();}
 let cdTimer=null;
-function stopCd(){clearTimeout(modalTimer);clearInterval(cdTimer);cdTimer=null;$('reopen').textContent='Ver el reto';}
+function stopCd(){clearTimeout(modalTimer);clearInterval(cdTimer);cdTimer=null;}
 function renderReto(b){stopCd();closeModal();}
-/* el reto se abre 10 s despues de que la persona abre "Definición y fuentes" */
-document.addEventListener('toggle',e=>{const d=e.target;
-  if(!d||d.tagName!=='DETAILS'||!d.open||!d.closest('.rail'))return;
-  const i=cur,b=B[i];if(!b.q||ans[i]!==undefined||cdTimer||!$('modal').hidden)return;
-  let n=10;const rb=$('reopen');rb.textContent='Reto en '+n+' s';
-  cdTimer=setInterval(()=>{n--;if(cur!==i){stopCd();return;}
-    if(n<=0){stopCd();if($('modal').hidden&&ans[i]===undefined)openModal();}else rb.textContent='Reto en '+n+' s';},1000);
-},true);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('modal').hidden)closeModal();});
 const retosOk=()=>Object.entries(ans).filter(([k,v])=>B[k].q&&B[k].q.a===v).length;
 const retosTot=()=>B.filter(b=>b.q).length;
