@@ -375,7 +375,7 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:
 .kst b{font-size:clamp(20px,2.2vw,26px)!important}
 .kst{gap:8px;grid-template-columns:repeat(3,minmax(0,1fr))}
 .kb{margin:1px 0!important}
-.qbtns{gap:6px}.qbtns .btn{min-height:34px;padding:4px 12px}
+.qbtns{gap:6px}.qbtns .btn{min-height:31px;padding:4px 12px}
 .govbody{gap:10px}
 .opt-box{padding:10px 14px;font-size:13.5px}
 
@@ -578,6 +578,30 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:
 .roles{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 .sdots{display:flex;gap:6px;margin-bottom:6px}.sdots i{width:26px;height:5px;border-radius:3px;background:#1B2C40}.sdots i.ok{background:#3CC4AE}.sdots i.bad{background:#F0705F}.sdots i.cur{background:#E3A93B}
 @media (max-width:600px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+
+/* ---- indicadores ---- */
+.itab{display:grid;gap:3px}
+.ir{display:grid;grid-template-columns:minmax(150px,2.2fr) .9fr .45fr .8fr 1.05fr 1.05fr;gap:8px;align-items:center;text-align:left;border:1px solid #2B4058;border-radius:10px;background:#0E1A29;color:#E5ECF4;padding:4px 12px;min-height:31px;font-size:13px;min-width:0;transition:border-color .2s,background .2s}
+.ir.ih{min-height:0;background:none;border:none;color:#93A3B7;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:0 12px}
+button.ir{cursor:pointer}button.ir:hover{border-color:#6C9DF0}
+button.ir[disabled]{opacity:1;cursor:default}button.ir[disabled]:hover{border-color:#2B4058}
+.ir.sel,button.ir.sel[disabled]:hover{border-color:#E3A93B;background:#201A0E}
+.ir .in{display:flex;align-items:baseline;gap:7px;min-width:0;white-space:nowrap;overflow:hidden}.ir .in small{color:#7F90A6;font-size:11.5px;overflow:hidden;text-overflow:ellipsis}.ir span small{color:#7F90A6;font-size:11.5px}
+.ir .bd{color:#FF9C8F;font-weight:700;background:#3A1B1B;border-radius:6px;padding:2px 7px;justify-self:start;animation:cyIn .4s both}
+.pulseb{animation:retoGlow 1.6s ease-in-out infinite}
+@media (max-width:760px){.ir{grid-template-columns:1.5fr .9fr .5fr .8fr}.ir .x,.ir .in small{display:none}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.subh{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#93A3B7;margin-bottom:6px}
+.rkr{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid #2B4058;border-radius:9px;background:#0E1A29;padding:5px 10px;margin-bottom:4px;font-size:13px;animation:cyIn .4s both}
+.rkr b{font-weight:600}.rkr em{font-style:normal;font-size:10.5px;margin-left:8px;border-radius:999px;padding:1px 8px;background:#E3A93B;color:#0C1520}.rkr em.o{background:#F0705F}
+.rkr.mine{border-color:#E3A93B}.rkr.tp{border-color:#F0705F}
+.sd{display:flex;gap:3px}.sd i{width:14px;height:8px;border-radius:2px;background:#1B2C40}.sd i.on{background:#F0705F}
+.imp{display:grid;gap:5px}
+.im{display:grid;gap:0;border-left:3px solid #F0705F;background:#0E1A29;border-radius:0 9px 9px 0;padding:5px 10px;animation:cyIn .45s both}
+
+@media (max-width:760px){.vs{grid-template-columns:1fr}}
+@media (max-height:700px){.rkr,.im{padding:3px 9px}.ir{padding:3px 10px}}
+.chips3{display:flex;gap:8px;flex-wrap:wrap}.chips3 span{border:1px solid #2B4058;border-radius:999px;padding:5px 14px;background:#0E1A29;font-size:13px;color:#93A3B7}.chips3 b{color:#F0705F;font-size:15px;margin-right:4px}
 </style>
 
 <div id="app" data-mode="intro">
@@ -651,7 +675,7 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:
  <rect x="48" y="322" width="36" height="58" rx="8" fill="var(--panel2)" stroke="var(--ink)" stroke-width="1.4"/><circle cx="66" cy="372" r="2.5" fill="var(--ink)"/>
  <text class="nt" x="100" y="348">Celular personal</text><text class="ns" x="100" y="367">del practicante de TI</text></g>
 <g id="tryTag" class="hid"><rect class="tagbg" x="28" y="208" width="170" height="20" rx="5"/><text class="tag" x="34" y="222" id="tryTxt">Intentos fallidos: 0 / 6</text></g>
-<g id="credTag" class="hid"><rect class="tagbg" x="28" y="246" width="150" height="20" rx="5"/><text class="tag" x="34" y="260">credenciales robadas</text></g>
+<g id="credTag" class="hid"><rect class="tagbg" x="28" y="246" width="150" height="20" rx="5"/><text class="tag" x="34" y="260">credenciales expuestas</text></g>
 
 <g id="siem" class="dimmable"><rect class="nd" x="310" y="56" width="170" height="56" rx="12"/>
  <circle class="siem-ring" cx="342" cy="84" r="20"/>
@@ -743,17 +767,17 @@ const P={per:['Personas','p-per'],pro:['Procesos','p-pro'],tec:['Tecnología','p
 const C={
  plataformas:{p:'tec',n:'Plataformas de gestión de datos',d:'Herramientas que centralizan la recolección, el almacenamiento y el procesamiento de datos de varias fuentes en un solo sistema, para que los equipos colaboren con la misma información.',c:'Cada área de la clínica guardaba sus archivos por separado. Sin una plataforma común nadie sabía dónde estaba cada dato sensible.',r:[1]},
  clasificacion:{p:'pro',n:'Clasificación de la información',d:'Etiquetar los datos por sensibilidad para decidir quién accede a ellos y cómo se protegen. Los datos de salud son datos sensibles: exigen autorización expresa y finalidad clara.',c:'Pacientes e historias clínicas son sensibles; facturación y nómina son confidenciales; los tickets de TI son internos. Nadie lo había documentado.',r:[1,2]},
- capacitacion:{p:'per',n:'Capacitación y cultura de seguridad',d:'Los empleados siguen siendo una de las principales causas de violaciones de datos. Se les forma para crear contraseñas seguras, reconocer phishing y manejar información sensible.',c:'El practicante abrió el correo falso. Una capacitación con simulacros de phishing reduce la probabilidad de este primer paso.',r:[1]},
+ capacitacion:{p:'per',n:'Capacitación y cultura de seguridad',d:'Los empleados siguen siendo una de las principales puntos de entrada de los incidentes de seguridad. Se les forma para crear contraseñas seguras, reconocer phishing y manejar información sensible.',c:'La cuenta del practicante recibió un correo falso sin haber tenido capacitación. Una capacitación con simulacros de phishing reduce la probabilidad de este primer paso.',r:[1]},
  moviles:{p:'tec',n:'Protección de dispositivos móviles',d:'Los celulares y tabletas que acceden a información corporativa necesitan cifrado, autenticación multifactor y control remoto, incluido el borrado a distancia si se pierden.',c:'El celular personal del practicante no tenía ningún control. Desde ahí se entregaron las credenciales.',r:[1]},
  firewall:{p:'tec',n:'Firewalls y bloqueo de intentos',d:'Los firewalls filtran el tráfico de red y bloquean accesos no autorizados. Junto a ellos se limitan los intentos fallidos de autenticación.',c:'Seis contraseñas probadas en dos minutos y nadie bloqueó la cuenta ni avisó. Una regla de bloqueo por intentos lo habría frenado.',r:[1]},
  vpn:{p:'tec',n:'Redes privadas virtuales (VPN)',d:'Cifran el tráfico entre el dispositivo y los servidores de la organización. Son esenciales cuando el personal accede de forma remota.',c:'La médica de guardia entra de noche por VPN y es normal. El atacante entró desde el exterior sin VPN y nadie lo cuestionó.',r:[1]},
- mfa:{p:'tec',n:'Autenticación multifactor (MFA)',d:'Exige más de una forma de verificación, como un código enviado al celular además de la contraseña. Reduce de forma importante el riesgo de cuentas comprometidas por phishing o robo de contraseñas.',c:'Con la contraseña robada bastó para entrar. Tres de doce cuentas no tenían MFA, entre ellas la del practicante.',r:[1]},
+ mfa:{p:'tec',n:'Autenticación multifactor (MFA)',d:'Exige más de una forma de verificación, como un código enviado al celular además de la contraseña. Reduce de forma importante el riesgo de cuentas comprometidas por phishing o contraseñas obtenidas por engaño.',c:'Con la contraseña obtenida por engaño bastó para entrar. Tres de doce cuentas no tenían MFA, entre ellas la del practicante.',r:[1]},
  zerotrust:{p:'tec',n:'Confianza cero (Zero Trust)',d:'Todo usuario y dispositivo se considera un riesgo potencial, incluso dentro de la red. Se verifica la identidad y el dispositivo de forma continua antes de dar acceso a un recurso.',c:'Un dispositivo desconocido, desde otro país y a las 2 a. m. fue aceptado como si fuera de confianza.',r:[1,4]},
  privilegio:{p:'pro',n:'Principio de mínimo privilegio',d:'Cada usuario tiene acceso solo a los datos estrictamente necesarios para su función. Limita la exposición y el daño posible de una cuenta comprometida.',c:'El practicante tenía permiso sobre las seis tablas y solo usaba una. "Se le dio acceso total para no pedir permisos".',r:[1,7]},
  rbac:{p:'pro',n:'Control de acceso basado en roles (RBAC)',d:'Asigna permisos según el rol dentro de la organización, no persona por persona. Es muy útil en organizaciones grandes, donde gestionar permisos individuales es poco práctico.',c:'El rol "soporte técnico" no debería poder leer historias clínicas; el rol "médico tratante" sí, y solo de sus pacientes.',r:[1,8]},
  iam:{p:'tec',n:'Gestión de identidades y accesos (IAM)',d:'Gestiona de forma centralizada quién tiene acceso a qué recursos, con políticas detalladas, mayor visibilidad y control sobre las identidades de la red.',c:'Existía una cuenta compartida (recepcion_turno): sin identidad individual no se sabe quién hizo qué.',r:[1]},
  segmentacion:{p:'tec',n:'Segmentación de accesos',d:'Divide los datos en niveles o categorías a las que solo acceden ciertos grupos: por ejemplo, datos financieros, de clientes y de recursos humanos.',c:'Una sola cuenta alcanzó datos clínicos, financieros y de nómina. Separarlos habría reducido el alcance del ataque.',r:[1]},
- cifrado:{p:'tec',n:'Cifrado de datos (data encryption)',d:'Convierte los datos en un formato ilegible para quien no tenga la clave, tanto en reposo como en tránsito. Si los datos se interceptan o se roban, no pueden usarse sin la clave.',c:'Los tres archivos salieron sin cifrar y quedaron legibles en el foro. Cifrados, el atacante se habría llevado datos inservibles.',r:[1,3]},
+ cifrado:{p:'tec',n:'Cifrado de datos (data encryption)',d:'Convierte los datos en un formato ilegible para quien no tenga la clave, tanto en reposo como en tránsito. Si los datos se interceptan o salen de la organización, no pueden usarse sin la clave.',c:'Los tres archivos salieron sin cifrar y quedaron legibles en el foro. Cifrados, el atacante se habría llevado datos inservibles.',r:[1,3]},
  ids:{p:'tec',n:'Detección y prevención de intrusiones (IDS/IPS)',d:'Los sistemas de detección identifican actividad sospechosa y los de prevención la bloquean antes de que cause daño. Monitorean el tráfico y las actividades de los usuarios.',c:'El sistema sí generó las alertas de la fuga a las 02:22 y a las 02:31, pero eran 2 entre 424.',r:[1]},
  monitoreo:{p:'tec',n:'Monitoreo continuo y registro de actividades',d:'Supervisa en tiempo real el uso y el acceso a los datos y conserva el historial de quién entra, cuándo, desde dónde y qué cambia. Permite reaccionar rápido y reconstruir lo ocurrido.',c:'Con reglas automáticas sobre los registros, el ataque se habría detectado en unos 2 minutos, no en casi 7 horas.',r:[1]},
  incidentes:{p:'pro',n:'Gestión de incidentes',d:'Un plan de respuesta establece los pasos a seguir: identificar y contener el incidente, notificar a las partes afectadas, mitigar los daños y tomar medidas para que no se repita.',c:'La clínica se enteró por un periodista y no tenía plan de respuesta probado. Cada hora sin contener la fuga amplió el daño.',r:[1,5]},
@@ -785,7 +809,7 @@ const CTL={
 const BUDGET=300, PP=['capac','plan','catalogo'];
 const STEPS=[
  {t:'Phishing al practicante (celular personal)',path:'p-phish',fx:{capac:'M'}},
- {t:'Ingreso con credenciales robadas, sin MFA',path:'p-login',fx:{mfa:'B',zt:'M'}},
+ {t:'Ingreso con credenciales obtenidas por engaño, sin MFA',path:'p-login',fx:{mfa:'B',zt:'M'}},
  {t:'Reconocimiento y movimiento lateral',path:'p-recon',fx:{zt:'B',catalogo:'M'}},
  {t:'Lectura masiva de datos sensibles',path:null,fx:{iam:'B'}},
  {t:'Exportación de 98.300 registros',path:'p-export',fx:{siem:'B'}},
@@ -802,23 +826,25 @@ function best(){let b=null;const ks=Object.keys(CTL);
  return b;}
 
 /* ---------- escenas y pasos ---------- */
-const SCN=['Portada','El caso','La clínica','El correo falso','La puerta sin llave','Permisos de más','El botín','08:50','Repetir la noche','Gobierno de datos','Cierre'];
+const SCN=['Portada','El caso','La clínica','El correo falso','La puerta sin llave','Permisos de más','La exportación','08:50','Repetir la noche','Gobierno de datos','Cierre'];
 const E=['n','Operación normal'],IN=['i','Intrusión en curso'];
 const B=[
  {sc:0,clock:'Portada',est:E,tick:-2,reg:null,cap:'',con:[]},
  {sc:1,clock:'El caso',est:E,tick:-2,reg:null,cap:'',con:[]},
  {sc:2,clock:'Una semana antes',est:E,tick:-1,reg:0,cap:'38.500 pacientes le confían su salud a esta clínica.',con:['plataformas','clasificacion'],set:{sens:1},pop:[{k:'ok',t:'38.500 pacientes',s:'historias, resultados y facturas'}]},
  {sc:2,clock:'Una semana antes',est:E,tick:-1,reg:0,cap:'Ya hay grietas: nada cifrado y dos tablas sin dueño.',con:[],set:{sens:1,noown:1},pop:[{k:'alert',t:'Inventario de datos',s:'0 tablas cifradas · 2 sin responsable'}]},
+ {sc:2,clock:'Una semana antes',est:E,tick:-1,reg:0,ind:1,gov:'ind1',cap:'Antes de la noche: lee los indicadores y plantea una hipótesis.',con:[]},
  {sc:3,clock:'Sáb 03 oct · 17:42',est:E,tick:0,reg:0,cap:'Sábado, 5:42 p. m. Llega un correo de "un proveedor".',q:{p:'Con lo que acabas de ver: ¿qué reduciría la probabilidad de este primer paso?',o:['Capacitar al personal con simulacros de phishing', 'Clasificar la información por sensibilidad', 'Centralizar los datos en una plataforma'],a:0,e:'Los empleados son una causa frecuente de brechas. Formarlos y practicar con simulacros reduce el riesgo de que alguien entregue su clave.'},con:['capacitacion','moviles'],set:{phone:1},hints:['capac'],fx:[['p-phish','mail',1500]],pop:[{k:'mail',t:'Proveedor Médico S.A.',s:'Factura vencida: abra el adjunto ahora'}]},
- {sc:3,clock:'Sáb 03 oct · 17:44',est:E,tick:0,reg:0,cap:'Un clic. Escribe su clave. Ya es del atacante.',con:[],set:{phone:1,creds:1},hints:['capac'],fx:[['p-cred','attack',1500]],pop:[{k:'alert',t:'Credenciales entregadas',s:'practicante.ti · clave válida'}]},
+ {sc:3,clock:'Sáb 03 oct · 17:44',est:E,tick:0,reg:0,cap:'Un clic, y la clave llega a manos del atacante.',con:[],set:{phone:1,creds:1},hints:['capac'],fx:[['p-cred','attack',1500]],pop:[{k:'alert',t:'Credenciales entregadas',s:'practicante.ti · clave válida'}]},
  {sc:4,clock:'Dom 04 oct · 02:03',est:IN,tick:1,reg:0,cap:'2:03 a. m. Seis claves probadas. Nadie se entera.',con:['firewall','vpn'],set:{phone:1,creds:1},hints:['zt'],brute:6,pop:[{k:'log',t:'02:03:12 LOGIN_FALLIDO',s:'practicante.ti · IP exterior'},{k:'log',t:'02:04:58 LOGIN_FALLIDO',s:'intento 6 de 6 · sin bloqueo'}]},
- {sc:4,clock:'Dom 04 oct · 02:05',est:IN,tick:2,reg:0,cap:'Entra. Sin segundo factor, sin VPN, desde un equipo desconocido.',q:{p:'El atacante tiene la clave correcta. ¿Qué control habría frenado su ingreso?',o:['Autenticación multifactor (MFA)', 'Capacitar al personal', 'Clasificar la información'],a:0,e:'Con MFA la clave robada no basta: falta el segundo factor. Zero Trust también habría cuestionado el equipo desconocido.'},con:['mfa','zerotrust'],set:{phone:1,creds:1,gate:1},hints:['mfa','zt'],fx:[['p-login','attack',1700]],pop:[{k:'alert',t:'02:05 LOGIN OK',s:'sin MFA · dispositivo nuevo · otro país'}]},
- {sc:5,clock:'Dom 04 oct · 02:07',est:IN,tick:3,reg:98710,cap:'Una cuenta de soporte puede leer las seis tablas.',q:{p:'¿Qué principio se violó al darle acceso total al practicante?',o:['Mínimo privilegio', 'VPN', 'Protección de dispositivos móviles'],a:0,e:'Mínimo privilegio: cada persona accede solo a los datos que necesita para su función. RBAC y IAM ayudan a aplicarlo.'},con:['privilegio','rbac','iam'],set:{phone:1,creds:1,gate:1,hit:1},hints:['iam'],fx:[['p-recon','attack',1400]],hit:['t-pac','t-hist','t-fact','t-nom'],pop:[{k:'log',t:'02:12 SELECT historias_clinicas',s:'~98.700 filas leídas'}]},
+ {sc:4,clock:'Dom 04 oct · 02:05',est:IN,tick:2,reg:0,cap:'Entra. Sin segundo factor, sin VPN, desde un equipo desconocido.',q:{p:'El atacante tiene la clave correcta. ¿Qué control habría frenado su ingreso?',o:['Autenticación multifactor (MFA)', 'Capacitar al personal', 'Clasificar la información'],a:0,e:'Con MFA una clave obtenida por engaño no basta: falta el segundo factor. Zero Trust también habría cuestionado el equipo desconocido.'},con:['mfa','zerotrust'],set:{phone:1,creds:1,gate:1},hints:['mfa','zt'],fx:[['p-login','attack',1700]],pop:[{k:'alert',t:'02:05 LOGIN OK',s:'sin MFA · dispositivo nuevo · otro país'}]},
+ {sc:5,clock:'Dom 04 oct · 02:07',est:IN,tick:3,reg:98710,cap:'Una cuenta de soporte puede leer las seis tablas.',q:{p:'¿Qué principio no se aplicó al darle a esa cuenta acceso a las seis tablas?',o:['Mínimo privilegio', 'VPN', 'Protección de dispositivos móviles'],a:0,e:'Mínimo privilegio: cada persona accede solo a los datos que necesita para su función. RBAC y IAM ayudan a aplicarlo.'},con:['privilegio','rbac','iam'],set:{phone:1,creds:1,gate:1,hit:1},hints:['iam'],fx:[['p-recon','attack',1400]],hit:['t-pac','t-hist','t-fact','t-nom'],pop:[{k:'log',t:'02:12 SELECT historias_clinicas',s:'~98.700 filas leídas'}]},
  {sc:5,clock:'Dom 04 oct · 02:18',est:IN,tick:3,reg:98710,cap:'Clínica, finanzas y nómina: una sola llave abre todo.',con:['segmentacion'],set:{phone:1,creds:1,gate:1,hit:1,sens:1},hints:['catalogo','iam'],pop:[{k:'alert',t:'Sin segmentación',s:'datos clínicos + financieros + personal'}]},
- {sc:6,clock:'Dom 04 oct · 02:21',est:IN,tick:4,reg:98710,cap:'Exporta tres tablas. Sin cifrar: cualquiera las lee.',q:{p:'¿Qué habría vuelto inútil el robo de estos archivos?',o:['Cifrar los datos', 'Control de acceso por roles', 'Capacitar al personal'],a:0,e:'Si los datos están cifrados, quien los roba no puede leerlos sin la clave.'},con:['cifrado'],set:{phone:1,creds:1,gate:1,hit:1,files:1},hints:['cifrado'],fx:[['p-export','data',1000]],pop:[{k:'log',t:'02:21 EXPORT · 98.300 filas',s:'3 archivos CSV sin cifrar'}]},
+ {sc:6,clock:'Dom 04 oct · 02:21',est:IN,tick:4,reg:98710,cap:'Exporta tres tablas. Sin cifrar: cualquiera las lee.',q:{p:'¿Qué habría dejado ilegibles estos archivos para quien los obtuvo?',o:['Cifrar los datos', 'Control de acceso por roles', 'Capacitar al personal'],a:0,e:'Si los datos están cifrados, quien los obtiene sin autorización no puede leerlos sin la clave.'},con:['cifrado'],set:{phone:1,creds:1,gate:1,hit:1,files:1},hints:['cifrado'],fx:[['p-export','data',1000]],pop:[{k:'log',t:'02:21 EXPORT · 98.300 filas',s:'3 archivos CSV sin cifrar'}]},
  {sc:6,clock:'Dom 04 oct · 02:31',est:['f','Datos filtrados'],tick:5,reg:98710,cap:'410 MB salen de la clínica. El sistema avisa… entre 424 alertas.',q:{p:'Había 2 alertas útiles entre 424. ¿Qué faltó?',o:['Monitoreo con reglas claras y alguien que revise las alertas', 'Generar todavía más alertas', 'Dar más permisos al practicante'],a:0,e:'No faltaban alertas: faltaban reglas claras y un proceso para revisarlas en minutos, no el lunes.'},con:['ids','monitoreo'],set:{phone:1,creds:1,gate:1,hit:1,files:1,alerts:1},hints:['siem'],fx:[['p-alert','attack',1100],['p-exfil','data',2000]],pop:[{k:'alert',t:'ALERTA 02:31',s:'transferencia de 410 MB al exterior'},{k:'log',t:'Cola de alertas: 424',s:'0 revisadas · "se miran los lunes"'}]},
  {sc:7,clock:'Dom 04 oct · 08:50',est:['d','Lo descubre la prensa'],tick:6,reg:98710,det:'6 h 46 min',cap:'8:50 a. m. Llama un periodista: los datos ya están en un foro.',q:{p:'Los datos de salud ya están publicados. ¿Qué se hace primero?',o:['Identificar y contener el incidente', 'Esperar a la auditoría anual', 'Borrar los registros de acceso'],a:0,e:'El plan de respuesta empieza por identificar y contener; después se preserva evidencia, se notifica y se mitiga.'},con:['incidentes','normativa'],set:{phone:1,creds:1,gate:1,hit:1,files:1,alerts:1,found:1},hints:['plan'],pop:[{k:'news',t:'ÚLTIMA HORA',s:'Datos de pacientes aparecen en un foro público'}]},
  {sc:7,clock:'Lun 05 oct · Auditoría',est:['d','Lo descubre la prensa'],tick:6,reg:98710,det:'6 h 46 min',cap:'La auditoría: 6 de 10 controles sin cumplir.',con:['auditoria'],set:{phone:1,creds:1,gate:1,hit:1,files:1,alerts:1,found:1,audit:1},hints:[],pop:[{k:'alert',t:'Cumplimiento: 30 %',s:'la auditoría externa estaba al día'}]},
+ {sc:7,clock:'Lun 05 oct · Evidencia',est:['d','Lo descubre la prensa'],tick:6,reg:98710,det:'6 h 46 min',ind:1,gov:'ind2',cap:'Contrasta tu hipótesis con la evidencia.',con:[]},
  {sc:8,clock:'Repetición simulada',est:['s','Repetición con controles'],tick:-2,reg:null,sim:1,cap:'Ahora el comité son ustedes: $300 millones y ocho controles.',con:['seleccion','escalabilidad','tco'],set:{}},
  {sc:9,clock:'Plan de gobierno',est:['g','Gobierno de datos'],tick:-2,reg:null,gov:'org',cap:'¿Quién se hace cargo de cada decisión sobre los datos?',con:['marco','politicas']},
  {sc:9,clock:'Plan de gobierno',est:['g','Gobierno de datos'],tick:-2,reg:null,gov:'cal',cap:'Un dato sucio también falla en plena crisis.',con:['calidad','transparencia']},
@@ -909,13 +935,13 @@ function renderRail(b){
 /* ---------- cámara, foco, reloj, notas, acto ---------- */
 const CAMS={full:[0,0,960,460],db:[360,60,600,330],brute:[0,0,560,292],login:[90,0,560,292],reads:[270,90,560,268],exp:[400,170,560,267],audit:[100,120,760,340]};
 const CAMB={3:'db',6:'brute',7:'login',8:'reads',9:'db',10:'exp',13:'audit'};
-const SPOTB={3:['db'],4:['attacker','phone'],5:['attacker','phone'],6:['attacker','iam'],7:['attacker','iam'],8:['iam','db'],9:['db'],10:['db'],11:['siem','db','foro'],12:['foro']};
+const SPOTB={3:['db'],5:['attacker','phone'],6:['attacker','phone'],7:['attacker','iam'],8:['attacker','iam'],9:['iam','db'],10:['db'],11:['db'],12:['siem','db','foro'],13:['foro']};
 let vb=CAMS.full.slice(),vbRun=0;
 function setCam(t){const my=++vbRun,f=vb.slice(),t0=performance.now(),D=reduce?1:1000;
   (function st(n){if(my!==vbRun)return;const p=Math.min(1,(n-t0)/D),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
     vb=f.map((v,i)=>v+(t[i]-v)*e);map.setAttribute('viewBox',vb.map(x=>x.toFixed(1)).join(' '));if(p<1)requestAnimationFrame(st);})(t0);}
 function setCap(t){const p=$('capText');p.setAttribute('aria-label',t);p.innerHTML=t.split(' ').map((w,i)=>`<span class="w" style="animation-delay:${reduce?0:i*55}ms">${w}</span>`).join(' ');}
-const TS=[null,null,null,null,1062,1064,1563,1565,1567,1578,1581,1591,1970,null,null,null,null,null,null];
+const TS=[null,null,null,null,null,1062,1064,1563,1565,1567,1578,1581,1591,1970,null,null,null,null,null,null,null];
 const DN=['SÁB','DOM','LUN'];
 const fmtClk=m=>{const d=Math.floor(m/1440),mm=Math.round(m%1440);return `${DN[d]||''} ${String(Math.floor(mm/60)).padStart(2,'0')}:${String(mm%60).padStart(2,'0')}`;};
 let clkV=null,clkRun=0;
@@ -934,7 +960,7 @@ const NOTES=[
  {m:4,t:'MFA y Zero Trust: nunca confiar, siempre verificar identidad y dispositivo. Deja que respondan el reto antes de mostrar la explicación.',q:'¿Qué señales debió evaluar el sistema? (dispositivo, país, hora, ausencia de MFA)'},
  {m:4,t:'Mínimo privilegio, RBAC e IAM. El practicante tenía permiso sobre seis tablas y usaba solo una.',q:'¿Qué permisos tendría un practicante de TI y con qué rol?'},
  {m:2,t:'Segmentación: reducir el alcance de un incidente. Una sola cuenta no debería abarcar datos clínicos, financieros y de personal.',q:null},
- {m:3,t:'Cifrado en reposo y en tránsito. Si el archivo sale cifrado, el robo pierde casi todo su valor.',q:'¿Dónde guardarían la clave de cifrado y quién la controla?'},
+ {m:3,t:'Cifrado en reposo y en tránsito. Si el archivo sale cifrado, lo obtenido pierde casi todo su valor.',q:'¿Dónde guardarían la clave de cifrado y quién la controla?'},
  {m:4,t:'IDS/IPS y monitoreo continuo. La tecnología avisó; la organización no reaccionó. Más alertas no es mejor: se necesitan reglas y un proceso de revisión.',q:'¿Quién debería revisar las alertas y en cuánto tiempo?'},
  {m:4,t:'Gestión de incidentes y normativa. Recorre el plan: contener, preservar evidencia, notificar y mitigar. Recuerda verificar plazos y artículos en la norma vigente antes de afirmarlos.',q:'¿A quién hay que notificar y por qué importa que sean datos de salud?'},
  {m:2,t:'Auditorías internas y externas. Cumplir una auditoría no equivale a estar seguro: el valor está en corregir los hallazgos.',q:null},
@@ -953,10 +979,10 @@ function showAct(b){const a=$('act');$('actN').textContent=`ACTO ${b.sc-1}`;$('a
 function go(i){
   i=Math.max(0,Math.min(B.length-1,i));run++;cur=i;const my0=run;
   const b=B[i];const newScene=b.sc!==lastSc&&b.sc>=2;
-  const mode=b.sc<2?'intro':b.sc===8?'sim':b.sc===9?'gov':b.sc===10?'close':'map';
-  const onMap=b.sc>=2&&b.sc<=8;
+  const mode=b.sc<2?'intro':b.ind?'gov':b.sc===8?'sim':b.sc===9?'gov':b.sc===10?'close':'map';
+  const onMap=b.sc>=2&&b.sc<=8&&!b.ind;
   $('app').dataset.mode=mode;clearPops();$('govBody').scrollTop=0;
-  $('vCover').hidden=b.sc!==0;$('vBrief').hidden=b.sc!==1;$('vMap').hidden=!onMap;$('vGov').hidden=b.sc!==9;$('vClose').hidden=b.sc!==10;
+  $('vCover').hidden=b.sc!==0;$('vBrief').hidden=b.sc!==1;$('vMap').hidden=!onMap;$('vGov').hidden=!(b.sc===9||b.ind);$('vClose').hidden=b.sc!==10;
   $('sim').hidden=!b.sim;
   seenSet=new Set();for(let k=0;k<=i;k++)(B[k].con||[]).forEach(c=>seenSet.add(c));
   
@@ -978,7 +1004,7 @@ function go(i){
     const dly=newScene?950:150;
     setTimeout(()=>{if(run!==my0)return;sp.forEach(id=>ping(id));playFx(b,my0);showPops(b,my0);},dly);
   }
-  if(b.sc===9)renderGov(b);
+  if(b.sc===9||b.ind)renderGov(b);
   if(b.sc===10)renderClose();
   renderReto(b);fitTags();if(b.sc===1)animBrief();
   if(!b.sim)$('mCtl').textContent=b.sc<8?'0 de 8':activeCount()+' de 8';
@@ -1106,7 +1132,7 @@ function animBrief(){
   T(8600,()=>$('pill4').classList.add('on'));
 }
 /* ---------- plan óptimo ---------- */
-const WHY={mfa:'frena el paso 2: un ingreso con clave robada',iam:'frena el paso 4: la lectura masiva de tablas',cifrado:'deja inservible el robo de los archivos (paso 7)',siem:'detecta la exportación en minutos (paso 5)',catalogo:'clasifica los datos y reduce el alcance (mitiga el paso 3)',capac:'reduce el éxito del phishing (paso 1)'};
+const WHY={mfa:'frena el paso 2: un ingreso con una clave obtenida por engaño',iam:'frena el paso 4: la lectura masiva de tablas',cifrado:'deja ilegibles los archivos que salieron (paso 7)',siem:'detecta la exportación en minutos (paso 5)',catalogo:'clasifica los datos y reduce el alcance (mitiga el paso 3)',capac:'reduce el éxito del phishing (paso 1)'};
 function optFrom(start,left){
   const keys=['mfa','iam','cifrado','capac','catalogo','siem'].filter(k=>!start[k]);
   const need=Math.min(left,keys.length);let best=null;
@@ -1125,7 +1151,7 @@ const SITU=[
  {t:'Responder ante la junta por la estrategia de datos de toda la clínica.',a:'cdo',e:'El CDO supervisa la estrategia global y rinde cuentas por ella.'},
  {t:'Comprobar, de forma independiente, que los controles sí funcionan.',a:'aud',e:'Auditoría verifica; no diseña ni opera los controles que revisa.'}];
 const LIFE=[['Creación','Clasificar al capturar: ¿es un dato sensible?'],['Almacenamiento','Cifrar en reposo y asignar un dueño.'],['Uso y acceso','Mínimo privilegio, RBAC y MFA.'],['Compartir','Cifrar en tránsito y registrar cada exportación.'],['Eliminación','Borrado seguro y plazo de retención definido.']];
-const G={opt:false,start:null,si:0,res:[],pick:null,life:0,q:{email:false,dup:false,city:false,doc:false},qn:0,picks:[]};
+const G={hyp:null,hypOk:false,sig:false,opt:false,start:null,si:0,res:[],pick:null,life:0,q:{email:false,dup:false,city:false,doc:false},qn:0,picks:[]};
 const QD={email:.10,dup:.08,city:.34,doc:.07};
 const qIdx=()=>Math.round(100*(4-Object.keys(QD).reduce((a,k)=>a+(G.q[k]?0:QD[k]),0))/4);
 function govOrg(){
@@ -1193,7 +1219,46 @@ function govKpi(){
   G.fresh=false;
   return `<div class="kh"><div class="qs">${qs}</div><div class="rk ${r0<30?'g':'r'}"><span>riesgo residual</span><b>${Math.round(r0)}</b><small>de 100</small></div></div>${G.opt&&op?'':cyc}<div class="kg">${cards}</div><div class="klow">${low}</div>`;
 }
-function renderGov(b){const g=$('govBody'),t=g.scrollTop;g.innerHTML=b.gov==='org'?govOrg():b.gov==='cal'?govCal():govKpi();g.scrollTop=0;}
+
+/* ---------- indicadores: hipotesis y contraste ---------- */
+const IND=[
+ {id:'guardia',n:'Médica de guardia',s:'Atención nocturna',perm:2,uso:2,mfa:1,cap:100,dev:'Institucional',acc:'VPN'},
+ {id:'dba',n:'Administrador de BD',s:'Equipo de TI',perm:6,uso:6,mfa:1,cap:100,dev:'Institucional',acc:'VPN'},
+ {id:'prac',n:'Practicante de TI',s:'cuenta practicante.ti',perm:6,uso:1,mfa:0,cap:0,dev:'Celular personal',acc:'Internet directo'},
+ {id:'conta',n:'Contadora',s:'Facturación',perm:1,uso:1,mfa:1,cap:80,dev:'Institucional',acc:'Red interna'},
+ {id:'nom',n:'Analista de nómina',s:'Talento humano',perm:1,uso:1,mfa:0,cap:50,dev:'Institucional',acc:'Red interna'},
+ {id:'rec',n:'Recepción',s:'Admisiones',perm:1,uso:1,mfa:0,cap:40,dev:'Institucional',acc:'Red interna'},
+ {id:'aud',n:'Auditor interno',s:'Consulta',perm:6,uso:0,mfa:1,cap:100,dev:'Institucional',acc:'VPN'}];
+const SIGN=[['perm','Permisos de más',r=>r.perm-r.uso>=3],['mfa','Sin MFA',r=>!r.mfa],['cap','Capacitación baja',r=>r.cap<60],['dev','Dispositivo personal',r=>r.dev!=='Institucional'],['acc','Acceso expuesto',r=>r.acc==='Internet directo']];
+const sigN=r=>SIGN.filter(x=>x[2](r)).length;
+const INDR=id=>IND.find(r=>r.id===id);
+function govInd1(){
+  const bad=(r,k)=>G.sig&&SIGN.find(x=>x[0]===k)[2](r)?'bd':'';
+  const rows=IND.map(r=>`<button class="ir ${G.hyp===r.id?'sel':''}" data-a="hyp" data-v="${r.id}" ${G.hypOk?'disabled':''} aria-pressed="${G.hyp===r.id}">
+   <span class="in"><b>${r.n}</b><small>${r.s}</small></span>
+   <span class="${bad(r,'perm')}">${r.perm}<small> · usa ${r.uso}</small></span>
+   <span class="${bad(r,'mfa')}">${r.mfa?'Sí':'No'}</span>
+   <span class="${bad(r,'cap')}">${r.cap} %</span>
+   <span class="x ${bad(r,'dev')}">${r.dev}</span>
+   <span class="x ${bad(r,'acc')}">${r.acc}</span></button>`).join('');
+  let low;
+  if(G.hypOk){const r=INDR(G.hyp);low=`<div class="fb ok"><b>Hipótesis registrada: ${r.n}</b> (${sigN(r)} de 5 señales). Al final la contrastamos con la evidencia.</div><div class="qbtns"><button class="btn" data-a="hreset">Cambiar mi hipótesis</button></div>`;}
+  else low=`<div class="qbtns"><button class="btn ${G.sig?'primary':''}" data-a="sig">${G.sig?'Ocultar señales de alerta':'Resaltar señales de alerta'}</button>${G.hyp?`<button class="btn primary pulseb" data-a="hconf">Registrar hipótesis: ${INDR(G.hyp).n}</button>`:'<span class="note">Toca una fila para elegirla.</span>'}</div>`;
+  return `<p class="lead2" style="font-size:14px"><b>Indicadores de acceso, una semana antes.</b> Si tuvieras que anticipar el punto de entrada de un incidente, ¿qué cuenta te preocupa más?</p>
+  <div class="itab"><div class="ir ih"><span>Rol / cuenta</span><span>Permisos</span><span>MFA</span><span>Capacitación</span><span class="x">Dispositivo</span><span class="x">Acceso</span></div>${rows}</div>${low}`;
+}
+function govInd2(){
+  const hy=G.hyp?INDR(G.hyp):null;
+  const order=IND.slice().sort((a,b)=>sigN(b)-sigN(a));
+  const rk=order.map((r,i)=>`<div class="rkr ${r.id==='prac'?'tp':''} ${hy&&hy.id===r.id?'mine':''}" style="animation-delay:${i*90}ms"><span><b>${r.n}</b>${hy&&hy.id===r.id?'<em>tu hipótesis</em>':''}${r.id==='prac'?'<em class="o">punto de entrada</em>':''}</span><span class="sd" aria-label="${sigN(r)} de 5 señales">`+[0,1,2,3,4].map(n=>`<i class="${n<sigN(r)?'on':''}"></i>`).join('')+`</span></div>`).join('');
+  const IM=[['Permisos de más: 6 tablas, usaba 1','98.710 registros leídos y 3 archivos exportados'],['Sin MFA: una contraseña bastaba','ingreso a las 2:05 a. m. con una sola clave'],['Capacitación 0 %','un clic en el correo falso entregó la clave'],['Dispositivo personal','la clave se escribió en un equipo sin controles'],['Acceso directo, sin VPN','ingreso desde otro país sin cuestionamiento']];
+  const im=IM.map((x,i)=>`<div class="im" style="animation-delay:${300+i*140}ms"><b>${x[0]}</b><em>${x[1]}</em></div>`).join('');
+  const v=!hy?`La cuenta con más señales era <b>Practicante de TI</b> (5 de 5).`:hy.id==='prac'?`<b>Tu hipótesis coincide:</b> la cuenta con más señales fue el punto de entrada.`:`Tu hipótesis: <b>${hy.n}</b> (${sigN(hy)} de 5). La entrada fue por <b>Practicante de TI</b> (5 de 5).`;
+  return `<p class="lead2" style="font-size:14.5px">${v} No fue una persona: fueron cinco condiciones sin control, y corregir una cambiaba la historia.</p>
+  <div class="vs"><div><div class="subh">Señales de alerta por cuenta (de 5)</div>${rk}</div><div><div class="subh">De cada indicador al impacto</div><div class="imp">${im}</div></div></div>
+  <div class="chips3"><span><b>98.710</b> registros expuestos</span><span><b>6 h 46 min</b> sin detectar</span><span><b>38.500</b> pacientes afectados</span></div>`;
+}
+function renderGov(b){const g=$('govBody'),t=g.scrollTop;g.innerHTML=b.gov==='org'?govOrg():b.gov==='cal'?govCal():b.gov==='ind1'?govInd1():b.gov==='ind2'?govInd2():govKpi();g.scrollTop=0;}
 
 /* ---------- mapa de estudio ---------- */
 const GRP=[['1 · ¿Quién puede entrar?','Acceso y seguridad',['moviles','firewall','vpn','mfa','zerotrust','privilegio','rbac','iam','segmentacion']],
@@ -1241,13 +1306,14 @@ const ACT={
  filt:v=>{pf=pf===v?null:v;},
  jump:v=>{go(+v);},
  mapa:()=>{go(B.length-1);},
- restart:()=>{sel2=null;pf=null;go(0);}
+ restart:()=>{sel2=null;pf=null;G.hyp=null;G.hypOk=false;G.sig=false;go(0);},
+ hyp:v=>{if(!G.hypOk)G.hyp=v;},hconf:()=>{if(G.hyp)G.hypOk=true;},hreset:()=>{G.hypOk=false;G.hyp=null;},sig:()=>{G.sig=!G.sig;}
 };
 $('app').addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const a=t.dataset.a;
   if(!ACT[a])return;ACT[a](t.dataset.v);
   if(a==='reto')openModal();
   else if(a==='mclose'||a==='mopen'){}
-  else if(['role','nextsit','resetorg','life','qrule','quarter','resetq','optshow','optapply'].includes(a))renderGov(B[cur]);
+  else if(['role','nextsit','resetorg','life','qrule','quarter','resetq','optshow','optapply','hyp','hconf','hreset','sig'].includes(a))renderGov(B[cur]);
   else if(['concept','filt'].includes(a))renderClose();
 });
 /* etiquetas del mapa: el recuadro se ajusta al texto */
